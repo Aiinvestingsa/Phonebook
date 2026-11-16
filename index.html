@@ -3,167 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VUNO ROYAL MOVIES 2 - Watch Free</title>
+<title>VUNO ROYAL MOVIES 3 - Admin Edition</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#080808;color:#fff}
+body{background:#080808;color:#fff;padding-bottom:80px}
 header{background:#000;padding:12px 15px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20;flex-wrap:wrap;gap:10px}
 .logo{font-size:22px;font-weight:900;color:#E50914}.logo span{color:#FFD700}
-.searchBox{display:flex;gap:5px;flex:1;max-width:400px}
-.searchBox input{flex:1;padding:10px;border-radius:20px;border:none;outline:none}
-.btn{background:#E50914;color:#fff;padding:10px 18px;border:none;border-radius:20px;font-weight:bold;cursor:pointer}
-.btn-gold{background:#FFD700;color:#000}
-.hero{height:360px;background:linear-gradient(to top,#080808,transparent),url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200') center/cover;display:flex;align-items:end;padding:25px}
-.hero h1{font-size:38px;line-height:1.1}.hero p{color:#ddd;margin:10px 0}
-.cats{display:flex;gap:8px;overflow-x:auto;padding:15px;position:sticky;top:60px;background:#080808;z-index:10}
+.searchBox{flex:1;max-width:400px;display:flex;gap:5px}.searchBox input{flex:1;padding:10px;border-radius:20px;border:none;outline:none}
+.btn{background:#E50914;color:#fff;padding:10px 16px;border:none;border-radius:20px;font-weight:bold;cursor:pointer;font-size:13px}
+.btn-gold{background:#FFD700;color:#000}.btn-dark{background:#222;color:#fff;border:1px solid #444}
+.hero{height:340px;background:linear-gradient(to top,#080808,transparent),url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200') center/cover;display:flex;align-items:end;padding:25px}
+.hero h1{font-size:34px;line-height:1.1}.hero p{color:#ddd;margin:10px 0}
+.cats{display:flex;gap:8px;overflow-x:auto;padding:12px 15px;background:#080808;position:sticky;top:58px;z-index:10}
 .cats button{padding:8px 16px;border-radius:20px;border:1px solid #333;background:#1a1a1a;color:#fff;white-space:nowrap;cursor:pointer}
-.cats button.active{background:#E50914;border-color:#E50914}
-.row{padding:10px 20px 20px}
-.row h2{margin:10px 0 15px;font-size:20px}
+.cats button.active{background:#E50914}
+.row{padding:10px 20px}.row h2{margin:10px 0 12px;font-size:19px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
-.card{background:#1a1a1a;border-radius:12px;overflow:hidden;cursor:pointer;transition:.2s}
-.card:hover{transform:scale(1.04)}
-.card img{width:100%;height:230px;object-fit:cover}
-.card div{padding:10px}.card h3{font-size:13px;height:32px;overflow:hidden}.card p{font-size:11px;color:#aaa;margin-top:4px}
+.card{background:#1a1a1a;border-radius:12px;overflow:hidden;position:relative;cursor:pointer}
+.card img{width:100%;height:230px;object-fit:cover;display:block}
+.card div{padding:10px}.card h3{font-size:13px;height:32px;overflow:hidden}.card p{font-size:11px;color:#aaa}
+.heart{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.7);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;z-index:2}
+.heart.active{color:#E50914}
 .badge{display:inline-block;background:#FFD700;color:#000;font-size:10px;font-weight:bold;padding:2px 6px;border-radius:4px;margin-top:5px}
+.progress{height:4px;background:#333}.progress div{height:100%;background:#E50914;width:0%}
 #player{position:fixed;inset:0;background:rgba(0,0,0,.97);display:none;flex-direction:column;align-items:center;justify-content:center;z-index:100;padding:15px}
 #player iframe{width:95%;max-width:900px;height:480px;border:none;border-radius:10px;background:#000}
 #close{position:absolute;top:15px;right:20px;font-size:28px;cursor:pointer}
-.actionRow{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;justify-content:center}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:200;padding:20px}
-.modalBox{background:#1a1a1a;padding:25px;border-radius:15px;width:100%;max-width:350px;text-align:center}
-.modalBox input{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:none;outline:none}
-.footer{text-align:center;color:#777;padding:30px;font-size:12px}
-@media(max-width:600px){.hero h1{font-size:26px}#player iframe{height:240px}.cats{top:98px}}
-</style>
-</head>
-<body>
-
-<header>
-  <div class="logo">VUNO<span>ROYAL</span> MOVIES</div>
-  <div class="searchBox">
-    <input id="search" placeholder="Search movies..." onkeyup="searchMovies()">
-  </div>
-  <div>
-    <span id="userName" style="font-size:13px;color:#FFD700"></span>
-    <button class="btn" id="loginBtn" onclick="openLogin()">Login</button>
-  </div>
-</header>
-
-<div class="hero">
-  <div>
-    <span class="badge">🔥 NEW - VERSION 2</span>
-    <h1>Watch Movies FREE<br>In Kagiso & Everywhere</h1>
-    <p>No Payment. Just Press Play. Nollywood • SA • Hollywood • Kids</p>
-    <button class="btn" onclick="playMovie('Night of the Living Dead','https://archive.org/embed/night_of_the_living_dead','https://archive.org/download/night_of_the_living_dead/night_of_the_living_dead.mp4')">▶ WATCH NOW</button>
-    <button class="btn btn-gold" onclick="filterCat('Nollywood')">🇳🇬 NOLLYWOOD</button>
-  </div>
-</div>
-
-<div class="cats" id="cats"></div>
-
-<div class="row"><h2 id="sectionTitle">🔥 Trending Now</h2><div class="grid" id="movieGrid"></div></div>
-
-<div class="row"><h2>🇿🇦 South African & Nollywood Picks</h2><div class="grid" id="saGrid"></div></div>
-
-<div id="player">
-  <div id="close" onclick="closePlayer()">✕</div>
-  <h2 id="playerTitle" style="margin-bottom:12px;text-align:center;padding:0 20px"></h2>
-  <iframe id="videoFrame" allowfullscreen></iframe>
-  <div class="actionRow">
-    <button class="btn btn-gold" id="dlBtn">⬇ Download Movie</button>
-    <button class="btn" onclick="shareMovie()">📤 Share on WhatsApp</button>
-    <button class="btn" style="background:#25D366" onclick="closePlayer()">✅ Done Watching</button>
-  </div>
-  <p style="margin-top:10px;color:#888;font-size:12px">Legal Public Domain Movies • From Internet Archive & YouTube</p>
-</div>
-
-<div class="modal" id="loginModal">
-  <div class="modalBox">
-    <h2 style="color:#FFD700">Welcome to Vuno Royal</h2>
-    <p style="color:#aaa;font-size:13px;margin:8px 0">Login to save your favourites</p>
-    <input id="uName" placeholder="Your Name e.g. Thabo">
-    <input id="uPhone" placeholder="WhatsApp Number e.g. 078 931 3670">
-    <button class="btn" style="width:100%;margin-top:10px" onclick="doLogin()">LOGIN / SIGN UP FREE</button>
-    <p style="margin-top:10px;color:#888;font-size:12px;cursor:pointer" onclick="closeLogin()">Skip for now</p>
-  </div>
-</div>
-
-<div class="footer">© 2026 Vuno Royal Movies • Kagiso • WhatsApp 078 931 3670 • Made for the Community<br>All movies are Public Domain / Creative Commons Legal</div>
-
-<script>
-const movies = [
-  {title:"Night of the Living Dead (1968)", genre:"Horror", cat:"Hollywood", img:"https://images.unsplash.com/photo-1509557965875-b88c97052f0e?w=400", url:"https://archive.org/embed/night_of_the_living_dead", dl:"https://archive.org/download/night_of_the_living_dead/night_of_the_living_dead.mp4"},
-  {title:"Big Buck Bunny", genre:"Family / Animation", cat:"Kids", img:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400", url:"https://archive.org/embed/BigBuckBunny_124", dl:"https://archive.org/download/BigBuckBunny_124/BigBuckBunny_124.mp4"},
-  {title:"Sita Sings The Blues", genre:"Animation", cat:"Hollywood", img:"https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400", url:"https://archive.org/embed/SitaSingsTheBlues", dl:"https://archive.org/download/SitaSingsTheBlues/SitaSingsTheBlues.mp4"},
-  {title:"Nosferatu (1922)", genre:"Horror Classic", cat:"Horror", img:"https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=400", url:"https://archive.org/embed/Nosferatu_1922", dl:"https://archive.org/download/Nosferatu_1922/Nosferatu_1922.mp4"},
-  {title:"Metropolis (1927)", genre:"Sci-Fi Classic", cat:"Sci-Fi", img:"https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400", url:"https://archive.org/embed/Metropolis1927", dl:"https://archive.org/download/Metropolis1927/Metropolis1927.mp4"},
-  {title:"Plan 9 From Outer Space", genre:"Sci-Fi Cult", cat:"Sci-Fi", img:"https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400", url:"https://archive.org/embed/Plan9FromOuterSpace", dl:"https://archive.org/download/Plan9FromOuterSpace/Plan9FromOuterSpace.mp4"},
-  {title:"The General (1926)", genre:"Action Classic", cat:"Action", img:"https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400", url:"https://archive.org/embed/TheGeneral1926", dl:"https://archive.org/download/TheGeneral1926/TheGeneral1926.mp4"},
-  {title:"Charlie Chaplin - The Kid", genre:"Comedy Classic", cat:"Comedy", img:"https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400", url:"https://archive.org/embed/CC_1914_02_02_TheKid", dl:"https://archive.org/download/CC_1914_02_02_TheKid/CC_1914_02_02_TheKid.mp4"},
-];
-
-const saMovies = [
-  {title:"Nollywood: Living In Bondage (Classic)", genre:"Nollywood • Drama", cat:"Nollywood", img:"https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=400", url:"https://www.youtube.com/embed/dQw4w9WgXcQ", dl:"#"},
-  {title:"SA Short Film: The Tale", genre:"South Africa • Drama", cat:"Nollywood", img:"https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=400", url:"https://www.youtube.com/embed/dQw4w9WgXcQ", dl:"#"},
-  {title:"Nollywood: Village Love Story", genre:"Nollywood • Romance", cat:"Nollywood", img:"https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=400", url:"https://www.youtube.com/embed/dQw4w9WgXcQ", dl:"#"},
-  {title:"Kasi Comedy: Kagiso Life", genre:"South Africa • Comedy", cat:"Nollywood", img:"https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400", url:"https://www.youtube.com/embed/dQw4w9WgXcQ", dl:"#"},
-];
-
-let currentCat = "All";
-const cats = ["All","Action","Horror","Sci-Fi","Comedy","Kids","Hollywood","Nollywood"];
-let currentTitle = "";
-
-function renderCats(){
-  document.getElementById('cats').innerHTML = cats.map(c=>`<button class="${c===currentCat?'active':''}" onclick="filterCat('${c}')">${c}</button>`).join('');
-}
-function cardHTML(m){
-  return `<div class="card" onclick="playMovie('${m.title}','${m.url}','${m.dl}')"><img src="${m.img}"><div><h3>${m.title}</h3><p>${m.genre}</p><span class="badge">▶ Watch Free</span></div></div>`;
-}
-function render(){
-  let list = currentCat==="All"? movies : movies.filter(m=>m.cat===currentCat);
-  document.getElementById('movieGrid').innerHTML = list.map(cardHTML).join('') || "<p>No movies in this category yet</p>";
-  document.getElementById('saGrid').innerHTML = saMovies.map(cardHTML).join('');
-  document.getElementById('sectionTitle').innerText = currentCat==="All" ? "🔥 Trending Now" : currentCat;
-}
-function filterCat(c){ currentCat=c; renderCats(); render(); }
-function searchMovies(){
-  let q = document.getElementById('search').value.toLowerCase();
-  let all = [...movies, ...saMovies];
-  let list = all.filter(m=>m.title.toLowerCase().includes(q));
-  document.getElementById('movieGrid').innerHTML = list.map(cardHTML).join('');
-  document.getElementById('sectionTitle').innerText = "🔍 Search Results";
-}
-function playMovie(title,url,dl){
-  currentTitle=title;
-  document.getElementById('playerTitle').innerText=title;
-  document.getElementById('videoFrame').src=url;
-  document.getElementById('dlBtn').onclick=()=>{ if(dl && dl!=="#") window.open(dl,'_blank'); else alert('Download coming soon for this movie. You can watch free now!'); };
-  document.getElementById('player').style.display='flex';
-  window.scrollTo(0,0);
-5}
-function closePlayer(){ document.getElementById('videoFrame').src=''; document.getElementById('player').style.display='none'; }
-function shareMovie(){
-  let text = `Watch FREE movie: ${currentTitle} on Vuno Royal Movies! No payment!`;
-  window.open(`https://wa.me/?text=${encodeURIComponent(text)}`,'_blank');
-}
-function openLogin(){ document.getElementById('loginModal').style.display='flex'; }
-function closeLogin(){ document.getElementById('loginModal').style.display='none'; }
-function doLogin(){
-  let name=document.getElementById('uName').value || "Friend";
-  let phone=document.getElementById('uPhone').value;
-  localStorage.setItem('vuno_user',name);
-  document.getElementById('userName').innerText="Hi, "+name+" 👋";
-  document.getElementById('loginBtn').innerText="Logout";
-  closeLogin();
-  alert(`Welcome ${name}! You are logged in. We will send new movies to ${phone}`);
-}
-let saved = localStorage.getItem('vuno_user');
-if(saved){ document.getElementById('userName').innerText="Hi, "+saved+" 👋"; document.getElementById('loginBtn').innerText="Logout"; }
-document.getElementById('loginBtn').onclick=()=>{
-  if(localStorage.getItem('vuno_user')){ localStorage.removeItem('vuno_user'); location.reload(); } else openLogin();
-};
-renderCats(); render();
-</script>
-</body>
-</html>I will 
+.actionRow{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;justify-content:center}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:200;padding:15px;overflow-y:auto}
+.modalBox{background:#1a1a1a;padding:22px;border-radius:15px;width:100%;max-width:420px}
+.modalBox input,.modalBox select,.modalBox textarea{width:100%;padding:11px;margin:7px 0;border-radius:8px;border:none;outline:none;background:#fff;color:#000}
+.modalBox h2{margin-bottom:8px}.small{font-size:12px;color:#aaa}
+.adminList{max-height:220
