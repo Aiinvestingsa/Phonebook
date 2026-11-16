@@ -3,17 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VUNO ROYAL MOVIES 4 - Make Money Edition</title>
+<title>Vuno Royal Movies 6 - App Edition</title>
+<meta name="theme-color" content="#E50914">
+<meta name="description" content="Vuno Royal Movies - Free Movies, Live TV, Premium R20, Chat">
+<link rel="manifest" href='data:application/manifest+json,{"name":"Vuno Royal Movies","short_name":"VunoRoyal","display":"standalone","background_color":"%23080808","theme_color":"%23E50914","icons":[{"src":"https://via.placeholder.com/512/E50914/FFFFFF?text=VR","sizes":"512x512","type":"image/png"}]}'>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#080808;color:#fff;padding-bottom:85px}
+body{background:#080808;color:#fff;padding-bottom:90px}
 header{background:#000;padding:12px 15px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20;flex-wrap:wrap;gap:10px}
 .logo{font-size:21px;font-weight:900;color:#E50914}.logo span{color:#FFD700}
-.searchBox{flex:1;max-width:380px}.searchBox input{width:100%;padding:10px;border-radius:20px;border:none;outline:none}
-.btn{background:#E50914;color:#fff;padding:10px 15px;border:none;border-radius:20px;font-weight:bold;cursor:pointer;font-size:13px}
-.btn-gold{background:#FFD700;color:#000}.btn-dark{background:#222;color:#fff;border:1px solid #444}.btn-green{background:#25D366;color:#000}
-.hero{height:360px;background:linear-gradient(to top,#080808,transparent),url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200') center/cover;display:flex;align-items:end;padding:25px}
+.searchBox{flex:1;max-width:340px}.searchBox input{width:100%;padding:10px;border-radius:20px;border:none;outline:none}
+.btn{background:#E50914;color:#fff;padding:10px 14px;border:none;border-radius:20px;font-weight:bold;cursor:pointer;font-size:13px}
+.btn-gold{background:#FFD700;color:#000}.btn-dark{background:#222;color:#fff;border:1px solid #444}.btn-green{background:#25D366;color:#000}.btn-purple{background:#7B2FFF;color:#fff}
+.avatar{width:32px;height:32px;border-radius:50%;background:#FFD700;color:#000;display:flex;align-items:center;justify-content:center;font-weight:900;cursor:pointer;position:relative}
+.notifDot{position:absolute;top:-2px;right:-2px;background:red;color:#fff;font-size:10px;width:16px;height:16px;border-radius:50%;display:none;align-items:center;justify-content:center}
+.bell{font-size:22px;cursor:pointer;position:relative}
+.bell .notifDot{top:-5px;right:-5px}
+.hero{height:380px;background:linear-gradient(to top,#080808,transparent),url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200') center/cover;display:flex;align-items:end;padding:25px}
 .hero h1{font-size:32px;line-height:1.1}.hero p{color:#ddd;margin:10px 0}
+.installBar{background:#FFD700;color:#000;padding:12px 15px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.installBar button{background:#000;color:#FFD700;border:none;padding:8px 14px;border-radius:20px;font-weight:bold;cursor:pointer}
+.liveBadge{background:red;color:#fff;padding:3px 8px;border-radius:5px;font-size:11px;font-weight:bold;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.4}}
 .cats{display:flex;gap:8px;overflow-x:auto;padding:12px 15px;background:#080808;position:sticky;top:58px;z-index:10}
 .cats button{padding:8px 16px;border-radius:20px;border:1px solid #333;background:#1a1a1a;color:#fff;white-space:nowrap;cursor:pointer}
 .cats button.active{background:#E50914}
@@ -22,11 +33,13 @@ header{background:#000;padding:12px 15px;display:flex;justify-content:space-betw
 .card{background:#1a1a1a;border-radius:12px;overflow:hidden;position:relative;cursor:pointer}
 .card img{width:100%;height:230px;object-fit:cover;display:block}
 .card div{padding:10px}.card h3{font-size:13px;height:32px;overflow:hidden}.card p{font-size:11px;color:#aaa}
-.heart{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.7);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;z-index:2}
-.plus{position:absolute;top:8px;left:8px;background:#FFD700;color:#000;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;z-index:2;font-size:18px}
+.heart{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.7);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:2}
+.plus{position:absolute;top:8px;left:8px;background:#FFD700;color:#000;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;z-index:2}
+.premium{position:absolute;bottom:58px;left:8px;background:#7B2FFF;color:#fff;font-size:10px;font-weight:bold;padding:3px 7px;border-radius:5px}
 .badge{display:inline-block;background:#FFD700;color:#000;font-size:10px;font-weight:bold;padding:2px 6px;border-radius:4px;margin-top:5px}
 .adBox{background:linear-gradient(90deg,#FFD700,#FFA500);color:#000;text-align:center;padding:14px;margin:15px 20px;border-radius:12px;font-weight:bold;font-size:14px;cursor:pointer}
-.adBox small{display:block;font-weight:normal;font-size:11px}
+.tvGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.tvCard{background:#111;border:1px solid #222;border-radius:12px;padding:15px;text-align:center;cursor:pointer}
 #player{position:fixed;inset:0;background:rgba(0,0,0,.97);display:none;flex-direction:column;align-items:center;justify-content:center;z-index:100;padding:15px;overflow-y:auto}
 #player iframe,#player video{width:95%;max-width:900px;height:460px;border:none;border-radius:10px;background:#000}
 #close{position:absolute;top:12px;right:18px;font-size:28px;cursor:pointer;z-index:101}
@@ -35,12 +48,16 @@ header{background:#000;padding:12px 15px;display:flex;justify-content:space-betw
 .comments input{width:100%;padding:11px;border-radius:8px;border:none;outline:none;margin:8px 0}
 .comment{background:#222;padding:10px;border-radius:8px;margin:6px 0;font-size:13px}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:flex-start;justify-content:center;z-index:200;padding:15px;overflow-y:auto}
-.modalBox{background:#1a1a1a;padding:22px;border-radius:15px;width:100%;max-width:450px;margin-top:20px}
+.modalBox{background:#1a1a1a;padding:22px;border-radius:15px;width:100%;max-width:480px;margin-top:20px}
 .modalBox input,.modalBox select,.modalBox textarea{width:100%;padding:11px;margin:7px 0;border-radius:8px;border:none;outline:none;background:#fff;color:#000}
-.adminList{max-height:220px;overflow:auto;margin-top:10px}
-.adminItem{background:#222;padding:10px;border-radius:8px;margin:5px 0;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.profileCard{background:#222;padding:12px;border-radius:10px;margin:8px 0;display:flex;justify-content:space-between;align-items:center}
+.chatList{max-height:300px;overflow:auto}
+.chatItem{background:#222;padding:12px;border-radius:10px;margin:8px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.chatBox{height:300px;overflow:auto;background:#111;padding:12px;border-radius:10px;margin:10px 0}
+.msg{padding:8px 12px;border-radius:12px;margin:6px 0;max-width:80%;font-size:13px}
+.msg.me{background:#E50914;margin-left:auto}.msg.other{background:#333}
 .bottomNav{position:fixed;bottom:0;left:0;right:0;background:#111;display:flex;justify-content:space-around;padding:10px;z-index:50;border-top:1px solid #222}
-.bottomNav button{background:none;border:none;color:#aaa;font-size:12px;cursor:pointer}.bottomNav button.active{color:#FFD700;font-weight:bold}
+.bottomNav button{background:none;border:none;color:#aaa;font-size:11px;cursor:pointer;position:relative}.bottomNav button.active{color:#FFD700;font-weight:bold}
 @media(max-width:600px){.hero h1{font-size:25px}#player iframe,#player video{height:230px}.cats{top:98px}}
 </style>
 </head>
@@ -48,42 +65,39 @@ header{background:#000;padding:12px 15px;display:flex;justify-content:space-betw
 
 <header>
   <div class="logo">VUNO<span>ROYAL</span> MOVIES</div>
-  <div class="searchBox"><input id="search" placeholder="Search movies..." onkeyup="searchMovies()"></div>
-  <span id="userName" style="font-size:13px;color:#FFD700"></span>
-  <button class="btn" id="loginBtn">Login</button>
+  <div class="searchBox"><input id="search" placeholder="Search..." onkeyup="searchMovies()"></div>
+  <div class="bell" onclick="openNotifs()">🔔<span class="notifDot" id="notifDot">3</span></div>
+  <div class="bell" onclick="openChatList()">💬<span class="notifDot" id="chatDot" style="display:flex">2</span></div>
+  <div class="avatar" id="avatarBtn" onclick="openProfile()">👤</div>
   <button class="btn btn-gold" onclick="openAdmin()">⚙️ Admin</button>
 </header>
 
+<!-- 📱 INSTALL APP BAR -->
+<div class="installBar" id="installBar">
+  <span>📱 <b>Install Vuno Royal App</b> - No Play Store Needed! Watch Faster!</span>
+  <button onclick="installApp()">INSTALL APP</button>
+</div>
+
 <div class="hero">
   <div>
-    <span class="badge">🔥 VERSION 4 - MAKE MONEY</span>
-    <h1>Watch FREE.<br>Upload Your Own. Earn.</h1>
-    <p>Nollywood • SA • Kasi • Hollywood • Kids</p>
+    <span class="badge">🔥 VERSION 6 - APP EDITION</span>
+    <h1>Now It's An App.<br>Chat, Follow, Watch Live.</h1>
+    <p><span class="liveBadge">● LIVE</span> Live TV • Premium R20 • Chat With Creators • Notifications</p>
     <button class="btn" onclick="playMovie(movies[0])">▶ WATCH NOW</button>
-    <button class="btn btn-gold" onclick="openUpload()">⬆️ UPLOAD MOVIE</button>
-    <button class="btn btn-green" onclick="showWatchlist()">📋 MY WATCHLIST</button>
+    <button class="btn btn-purple" onclick="showPremium()">👑 PREMIUM</button>
+    <button class="btn btn-gold" onclick="openUpload()">⬆️ UPLOAD & EARN</button>
   </div>
 </div>
 
-<!-- 💰 AD SLOT 1 - TOP -->
-<div class="adBox" onclick="window.open('https://wa.me/27789313670','_blank')">
-  📢 ADVERTISE HERE - R200 / WEEK • WhatsApp 078 931 3670
-  <small>Your business here - Spaza, Taxi, Salon, Church - Everyone in Kagiso will see it!</small>
-</div>
-
+<div class="adBox" onclick="window.open('https://wa.me/27789313670','_blank')">📢 ADVERTISE HERE - R200 / WEEK • WhatsApp 078 931 3670</div>
 <div class="cats" id="cats"></div>
 
+<div class="row"><h2>📺 <span class="liveBadge">● LIVE</span> Live TV</h2><div class="tvGrid" id="tvGrid"></div></div>
 <div id="continueSection" class="row" style="display:none"><h2>▶️ Continue Watching</h2><div class="grid" id="continueGrid"></div></div>
-
 <div class="row"><h2 id="sectionTitle">🔥 Trending Now</h2><div class="grid" id="movieGrid"></div></div>
-
-<!-- 💰 AD SLOT 2 - MIDDLE -->
-<div class="adBox" style="background:linear-gradient(90deg,#25D366,#128C7E);color:#fff" onclick="window.open('https://wa.me/27789313670?text=Hi I want to advertise on Vuno Royal Movies','_blank')">
-  💧 VUNO ROYAL NANO PROTECTION - ONLY R100 - Water Slides Off Your Phone!
-  <small>Click to Order on WhatsApp - Kagiso • Johannesburg • Verena</small>
-</div>
-
+<div class="row"><h2>👑 Premium - R20</h2><div class="grid" id="premiumGrid"></div></div>
 <div class="row"><h2>🇿🇦 SA & Nollywood</h2><div class="grid" id="saGrid"></div></div>
+<div class="row"><h2>👥 Creators To Follow - Chat With Them!</h2><div id="creatorList"></div></div>
 <div class="row"><h2>⬆️ Community Uploads</h2><div class="grid" id="uploadGrid"></div></div>
 
 <!-- PLAYER -->
@@ -95,60 +109,101 @@ header{background:#000;padding:12px 15px;display:flex;justify-content:space-betw
     <button class="btn btn-gold" id="dlBtn">⬇ Download</button>
     <button class="btn" id="favBtn">❤️ Favourite</button>
     <button class="btn" id="watchBtn">📋 Watchlist</button>
-    <button class="btn" onclick="shareMovie()">📤 Share WhatsApp</button>
+    <button class="btn" onclick="shareMovie()">📤 Share</button>
     <button class="btn" style="background:#25D366" onclick="closePlayer()">✅ Done</button>
   </div>
-  <div class="comments">
-    <h3>💬 Comments</h3>
-    <div id="commentList"></div>
-    <input id="commentName" placeholder="Your Name">
-    <input id="commentText" placeholder="Write a comment... e.g. This movie is fire 🔥" onkeydown="if(event.key==='Enter') addComment()">
-    <button class="btn" style="width:100%" onclick="addComment()">Post Comment</button>
-  </div>
+  <div class="comments"><h3>💬 Comments</h3><div id="commentList"></div><input id="commentName" placeholder="Your Name"><input id="commentText" placeholder="Write comment..." onkeydown="if(event.key==='Enter') addComment()"><button class="btn" style="width:100%" onclick="addComment()">Post Comment</button></div>
 </div>
+
+<!-- NOTIFICATIONS -->
+<div class="modal" id="notifModal"><div class="modalBox">
+  <h2>🔔 Notifications</h2>
+  <div id="notifList"></div>
+  <button class="btn btn-gold" style="width:100%;margin-top:10px" onclick="enableNotifs()">🔔 TURN ON NOTIFICATIONS</button>
+  <button class="btn btn-dark" style="width:100%;margin-top:8px" onclick="closeNotifs()">Close</button>
+</div></div>
+
+<!-- CHAT LIST -->
+<div class="modal" id="chatListModal"><div class="modalBox">
+  <h2>💬 Chats / DM</h2>
+  <p style="color:#aaa;font-size:13px">Chat with creators & friends. Ask about new movies!</p>
+  <div class="chatList" id="chatList"></div>
+  <button class="btn btn-dark" style="width:100%;margin-top:8px" onclick="closeChatList()">Close</button>
+</div></div>
+
+<!-- CHAT ROOM -->
+<div class="modal" id="chatModal"><div class="modalBox">
+  <h2 id="chatWith">💬 Chat</h2>
+  <div class="chatBox" id="chatBox"></div>
+  <input id="chatInput" placeholder="Type message..." onkeydown="if(event.key==='Enter') sendChat()">
+  <button class="btn btn-green" style="width:100%" onclick="sendChat()">Send 📤</button>
+  <button class="btn btn-dark" style="width:100%;margin-top:8px" onclick="closeChat()">Back</button>
+</div></div>
+
+<!-- PROFILE -->
+<div class="modal" id="profileModal"><div class="modalBox">
+  <h2>👤 My Profile</h2>
+  <div style="text-align:center"><div class="avatar" style="width:70px;height:70px;font-size:30px;margin:auto" id="profileAvatar">T</div><h3 id="profileName">Guest</h3><p id="profileStats" style="color:#aaa;font-size:13px"></p></div>
+  <input id="profileBio" placeholder="Bio e.g. Nollywood fan 🔥">
+  <button class="btn btn-gold" style="width:100%" onclick="saveProfile()">SAVE PROFILE</button>
+  <h3 style="margin-top:12px">👥 Following</h3><div id="myFollowing"></div>
+  <button class="btn" style="width:100%;margin-top:10px" onclick="doLoginPrompt()">LOGIN / SWITCH ACCOUNT</button>
+  <button class="btn btn-dark" style="width:100%;margin-top:8px" onclick="closeProfile()">Close</button>
+</div></div>
+
+<!-- PAY -->
+<div class="modal" id="payModal"><div class="modalBox">
+  <h2>👑 Unlock Premium</h2><p id="payTitle" style="color:#FFD700;font-weight:bold"></p>
+  <p style="color:#aaa;font-size:13px">Pay R20 once - Watch forever. Creator gets R10, You get R10.</p>
+  <button class="btn btn-green" style="width:100%;margin-top:10px" onclick="payWhatsApp()">📲 PAY VIA WHATSAPP - R20</button>
+  <button class="btn btn-purple" style="width:100%;margin-top:8px" onclick="payCard()">💳 PAY WITH CARD - R20</button>
+  <input id="payCode" placeholder="Enter Unlock Code e.g. VR2026">
+  <button class="btn" style="width:100%" onclick="unlockWithCode()">UNLOCK WITH CODE</button>
+  <button class="btn btn-dark" style="width:100%;margin-top:8px" onclick="closePay()">Close</button>
+</div></div>
 
 <!-- LOGIN -->
 <div class="modal" id="loginModal"><div class="modalBox">
-  <h2 style="color:#FFD700">Welcome</h2>
+  <h2 style="color:#FFD700">Create Profile</h2>
   <input id="uName" placeholder="Your Name">
   <input id="uPhone" placeholder="WhatsApp Number">
-  <button class="btn" style="width:100%" onclick="doLogin()">LOGIN FREE</button>
+  <input id="uBio" placeholder="Bio">
+  <button class="btn" style="width:100%" onclick="doLogin()">CREATE PROFILE FREE</button>
   <p style="text-align:center;color:#aaa;font-size:12px;margin-top:10px;cursor:pointer" onclick="closeLogin()">Skip</p>
 </div></div>
 
 <!-- UPLOAD -->
 <div class="modal" id="uploadModal"><div class="modalBox">
-  <h2>⬆️ Upload Your Own Movie / Video</h2>
-  <p style="color:#aaa;font-size:13px">Upload your own Kasi movie, skit, music video, church service. It will show in Community Uploads!</p>
-  <input id="upTitle" placeholder="Title e.g. Kagiso Comedy Ep 1">
+  <h2>⬆️ Upload & Earn</h2>
+  <input id="upTitle" placeholder="Title">
   <select id="upCat"><option>Nollywood</option><option>Hollywood</option><option>Action</option><option>Comedy</option><option>Kids</option><option>Music Video</option><option>Church</option></select>
+  <label style="font-size:13px"><input type="checkbox" id="upPremium" style="width:auto"> 👑 Premium - Charge R20</label>
   <input id="upFile" type="file" accept="video/*">
-  <p style="color:#FFD700;font-size:12px">OR paste YouTube / Archive link:</p>
-  <input id="upUrl" placeholder="https://www.youtube.com/embed/XXXX">
-  <input id="upImg" placeholder="Poster Image Link (optional)">
-  <button class="btn btn-gold" style="width:100%" onclick="doUpload()">🚀 PUBLISH VIDEO</button>
+  <input id="upUrl" placeholder="OR YouTube Link">
+  <input id="upImg" placeholder="Poster Link (optional)">
+  <button class="btn btn-gold" style="width:100%" onclick="doUpload()">🚀 PUBLISH + NOTIFY FOLLOWERS</button>
   <button class="btn btn-dark" style="width:100%;margin-top:8px" onclick="closeUpload()">Close</button>
-  <p style="color:#888;font-size:11px;margin-top:8px">⚠️ Only upload videos YOU own. No pirated movies - your site can be shut down.</p>
 </div></div>
 
 <!-- ADMIN -->
 <div class="modal" id="adminModal"><div class="modalBox">
-  <h2>⚙️ Admin Panel + 💰 Money Settings</h2>
-  <p style="color:#aaa;font-size:12px">Password is <b>1234</b>. Change it in code.</p>
-  <input id="adminPass" type="password" placeholder="Admin Password">
+  <h2>⚙️ Admin + 💰 Payments + 📣 Notify</h2>
+  <input id="adminPass" type="password" placeholder="Password 1234">
   <div id="adminForm" style="display:none">
-    <h3 style="margin-top:10px">➕ Add Movie</h3>
     <input id="newTitle" placeholder="Movie Title">
     <select id="newCat"><option>Hollywood</option><option>Nollywood</option><option>Action</option><option>Horror</option><option>Comedy</option><option>Sci-Fi</option><option>Kids</option></select>
-    <input id="newGenre" placeholder="Genre">
-    <input id="newImg" placeholder="Poster Image Link">
-    <input id="newUrl" placeholder="Video Embed Link">
-    <input id="newDl" placeholder="Download Link (optional)">
+    <label style="font-size:13px"><input type="checkbox" id="newPremium" style="width:auto"> Premium R20</label>
+    <input id="newImg" placeholder="Poster Link">
+    <input id="newUrl" placeholder="Video Link">
     <button class="btn btn-gold" style="width:100%" onclick="addMovie()">ADD MOVIE</button>
-    <h3 style="margin-top:15px">💰 Your Ad Prices</h3>
-    <p style="color:#aaa;font-size:12px">Top Ad: R200/week • Middle Ad: R200/week • Bottom Ad: R100/week = R500/week if all sold!</p>
-    <p style="color:#FFD700;font-size:13px">To put real Google Ads: Go to adsense.google.com, get your code, paste it where it says AD SLOT in the code.</p>
-    <div class="adminList" id="adminList"></div>
+    <h3 style="margin-top:12px">📣 Send Notification To Everyone</h3>
+    <input id="notifTitle" placeholder="e.g. NEW MOVIE: Love In Lagos is OUT! 🔥">
+    <button class="btn btn-green" style="width:100%" onclick="sendNotifToAll()">📣 SEND NOTIFICATION</button>
+    <h3 style="margin-top:12px">💳 Payment Settings</h3>
+    <input id="payfastLink" placeholder="PayFast / Yoco Link">
+    <input id="whatsappPay" placeholder="WhatsApp Number e.g. 27789313670" value="27789313670">
+    <button class="btn" style="width:100%" onclick="savePaySettings()">SAVE PAYMENTS</button>
+    <div id="adminList" style="max-height:200px;overflow:auto;margin-top:10px"></div>
   </div>
   <button class="btn" id="adminUnlock" style="width:100%;margin-top:8px" onclick="unlockAdmin()">UNLOCK ADMIN</button>
   <button class="btn btn-dark" style="width:100%;margin-top:8px" onclick="closeAdmin()">Close</button>
@@ -156,97 +211,144 @@ header{background:#000;padding:12px 15px;display:flex;justify-content:space-betw
 
 <div class="bottomNav">
   <button class="active" onclick="showHome(this)">🏠 Home</button>
-  <button onclick="showFavs(this)">❤️ Favourites</button>
-  <button onclick="showWatchlist(this)">📋 Watchlist</button>
-  <button onclick="openUpload()">⬆️ Upload</button>
-  <button onclick="openAdmin()">⚙️ Admin</button>
+  <button onclick="showFavs(this)">❤️ Favs</button>
+  <button onclick="openChatList()">💬 Chat <span id="navChatDot" style="color:red">●</span></button>
+  <button onclick="showPremium(this)">👑 Premium</button>
+  <button onclick="openProfile()">👤 Profile</button>
 </div>
-
-<div style="text-align:center;color:#666;font-size:12px;padding:20px">© Vuno Royal Movies • WhatsApp 078 931 3670<br>Advertise Here - R200/week</div>
+<div style="text-align:center;color:#666;font-size:12px;padding:20px">© Vuno Royal Movies 6 • WhatsApp 078 931 3670 • Install as App - No Play Store Needed</div>
 
 <script>
+// PWA INSTALL
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{ e.preventDefault(); deferredPrompt=e; });
+function installApp(){
+  if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt.userChoice.then(()=>{ deferredPrompt=null; document.getElementById('installBar').style.display='none'; }); }
+  else { alert("To Install App:\n\n📱 ANDROID: Tap ⋮ (3 dots) > Add to Home Screen / Install App\n📺 ANDROID TV: Open Chrome > Menu > Install App\n🍎 iPHONE: Share Button > Add to Home Screen\n\nYour site will now work like a real app - no Play Store needed!"); }
+}
+// NOTIFICATIONS
+function enableNotifs(){
+  if("Notification" in window){ Notification.requestPermission().then(p=>{ if(p==="granted"){ new Notification("Vuno Royal Movies 👑",{body:"Notifications ON! You will get new movies first!"}); alert("Notifications ON ✅"); } else alert("Please allow notifications in browser settings"); }); }
+  else alert("Notifications not supported on this device. Use Chrome.");
+}
+
 let defaultMovies=[
-  {title:"Night of the Living Dead (1968)",genre:"Horror • Classic",cat:"Hollywood",img:"https://images.unsplash.com/photo-1509557965875-b88c97052f0e?w=400",url:"https://archive.org/embed/night_of_the_living_dead",dl:"https://archive.org/download/night_of_the_living_dead/night_of_the_living_dead.mp4",type:"embed"},
-  {title:"Big Buck Bunny",genre:"Family",cat:"Kids",img:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400",url:"https://archive.org/embed/BigBuckBunny_124",dl:"https://archive.org/download/BigBuckBunny_124/BigBuckBunny_124.mp4",type:"embed"},
-  {title:"Nosferatu (1922)",genre:"Horror Classic",cat:"Horror",img:"https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=400",url:"https://archive.org/embed/Nosferatu_1922",dl:"https://archive.org/download/Nosferatu_1922/Nosferatu_1922.mp4",type:"embed"},
-  {title:"Nollywood: Living In Bondage",genre:"Nollywood • Drama",cat:"Nollywood",img:"https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=400",url:"https://www.youtube.com/embed/dQw4w9WgXcQ",dl:"#",type:"embed"},
-  {title:"Kasi Comedy: Kagiso Life",genre:"SA • Comedy",cat:"Nollywood",img:"https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400",url:"https://www.youtube.com/embed/dQw4w9WgXcQ",dl:"#",type:"embed"},
+  {title:"Night of the Living Dead",genre:"Horror • Free",cat:"Hollywood",img:"https://images.unsplash.com/photo-1509557965875-b88c97052f0e?w=400",url:"https://archive.org/embed/night_of_the_living_dead",dl:"#",type:"embed",premium:false,creator:"Vuno Royal"},
+  {title:"Big Buck Bunny",genre:"Family • Free",cat:"Kids",img:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400",url:"https://archive.org/embed/BigBuckBunny_124",dl:"#",type:"embed",premium:false,creator:"Vuno Royal"},
+  {title:"Nollywood PREMIUM: Love In Lagos",genre:"Nollywood • R20",cat:"Nollywood",img:"https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=400",url:"https://www.youtube.com/embed/dQw4w9WgXcQ",dl:"#",type:"embed",premium:true,creator:"Nollywood King"},
+  {title:"Kasi PREMIUM: Kagiso Nights Ep 1",genre:"SA • R20",cat:"Nollywood",img:"https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400",url:"https://www.youtube.com/embed/dQw4w9WgXcQ",dl:"#",type:"embed",premium:true,creator:"Thabo Kagiso"},
+  {title:"Nosferatu (1922)",genre:"Horror • Free",cat:"Horror",img:"https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=400",url:"https://archive.org/embed/Nosferatu_1922",dl:"#",type:"embed",premium:false,creator:"Vuno Royal"},
 ];
-let movies=JSON.parse(localStorage.getItem('vuno_movies4')||'null')||defaultMovies;
-let favs=JSON.parse(localStorage.getItem('vuno_favs4')||'[]');
-let watchlist=JSON.parse(localStorage.getItem('vuno_watch4')||'[]');
-let cont=JSON.parse(localStorage.getItem('vuno_cont4')||'[]');
-let comments=JSON.parse(localStorage.getItem('vuno_comments4')||'{}');
-let currentCat="All"; let currentMovie=null;
+let tvChannels=[
+  {name:"SABC 1",icon:"📺",desc:"Live • SA Shows",url:"https://www.youtube.com/embed/dQw4w9WgXcQ"},
+  {name:"eTV",icon:"📡",desc:"Live • News",url:"https://www.youtube.com/embed/dQw4w9WgXcQ"},
+  {name:"Nollywood TV",icon:"🇳🇬",desc:"Live • Nollywood",url:"https://www.youtube.com/embed/dQw4w9WgXcQ"},
+  {name:"Kasi Music TV",icon:"🎵",desc:"Live • Amapiano",url:"https://www.youtube.com/embed/dQw4w9WgXcQ"},
+  {name:"News 24",icon:"📰",desc:"Live • News",url:"https://www.youtube.com/embed/dQw4w9WgXcQ"},
+  {name:"Kids TV",icon:"🧒",desc:"Live • Cartoons",url:"https://www.youtube.com/embed/dQw4w9WgXcQ"},
+];
+let creators=[
+  {name:"Nollywood King",bio:"Nollywood every week 🔥",followers:1240,img:"N",lastMsg:"New movie drops Friday! 🔥"},
+  {name:"Thabo Kagiso",bio:"Kasi Comedy 😂",followers:890,img:"T",lastMsg:"Thanks for watching my Ep 1!"},
+  {name:"Vuno Royal",bio:"Official 👑",followers:5400,img:"V",lastMsg:"Welcome to Vuno Royal Movies!"},
+  {name:"Mama Sihle",bio:"Gospel 🙏",followers:670,img:"M",lastMsg:"New Gospel video Sunday"},
+];
+let movies=JSON.parse(localStorage.getItem('vuno_movies6')||'null')||defaultMovies;
+let favs=JSON.parse(localStorage.getItem('vuno_favs6')||'[]');
+let watchlist=JSON.parse(localStorage.getItem('vuno_watch6')||'[]');
+let cont=JSON.parse(localStorage.getItem('vuno_cont6')||'[]');
+let comments=JSON.parse(localStorage.getItem('vuno_comments6')||'{}');
+let following=JSON.parse(localStorage.getItem('vuno_following6')||'[]');
+let unlocked=JSON.parse(localStorage.getItem('vuno_unlocked6')||'[]');
+let paySettings=JSON.parse(localStorage.getItem('vuno_pay6')||'{}');
+let notifs=JSON.parse(localStorage.getItem('vuno_notifs6')||'null')||[
+  {title:"🔥 NEW MOVIE: Love In Lagos is OUT!",time:"2 hours ago",read:false},
+  {title:"👑 Thabo Kagiso uploaded Kagiso Nights Ep 1",time:"5 hours ago",read:false},
+  {title:"📺 Live TV is now FREE - Watch SABC 1 Live",time:"1 day ago",read:false},
+];
+let chats=JSON.parse(localStorage.getItem('vuno_chats6')||'null')||{
+  "Vuno Royal":[{from:"other",text:"Welcome to Vuno Royal Movies! 👑 What movie do you want to watch?"},{from:"me",text:"I love Nollywood!"}],
+  "Nollywood King":[{from:"other",text:"New movie drops Friday! 🔥 Are you ready?"}],
+  "Thabo Kagiso":[{from:"other",text:"Thanks for watching my Ep 1! 😂"}],
+};
+let currentCat="All"; let currentMovie=null; let currentChat=null;
 const cats=["All","Action","Horror","Sci-Fi","Comedy","Kids","Hollywood","Nollywood","Music Video","Church"];
-function save(){ localStorage.setItem('vuno_movies4',JSON.stringify(movies)); localStorage.setItem('vuno_favs4',JSON.stringify(favs)); localStorage.setItem('vuno_watch4',JSON.stringify(watchlist)); localStorage.setItem('vuno_cont4',JSON.stringify(cont)); localStorage.setItem('vuno_comments4',JSON.stringify(comments)); }
+function save(){ localStorage.setItem('vuno_movies6',JSON.stringify(movies)); localStorage.setItem('vuno_favs6',JSON.stringify(favs)); localStorage.setItem('vuno_watch6',JSON.stringify(watchlist)); localStorage.setItem('vuno_cont6',JSON.stringify(cont)); localStorage.setItem('vuno_comments6',JSON.stringify(comments)); localStorage.setItem('vuno_following6',JSON.stringify(following)); localStorage.setItem('vuno_unlocked6',JSON.stringify(unlocked)); localStorage.setItem('vuno_pay6',JSON.stringify(paySettings)); localStorage.setItem('vuno_notifs6',JSON.stringify(notifs)); localStorage.setItem('vuno_chats6',JSON.stringify(chats)); updateNotifDot(); }
+function updateNotifDot(){ let unread=notifs.filter(n=>!n.read).length; let dot=document.getElementById('notifDot'); if(unread>0){ dot.style.display='flex'; dot.innerText=unread; } else dot.style.display='none'; }
 function renderCats(){ document.getElementById('cats').innerHTML=cats.map(c=>`<button class="${c===currentCat?'active':''}" onclick="filterCat('${c}')">${c}</button>`).join(''); }
 function isFav(t){ return favs.includes(t); } function isWatch(t){ return watchlist.includes(t); }
 function toggleFav(t,ev){ ev.stopPropagation(); favs=isFav(t)?favs.filter(x=>x!==t):[...favs,t]; save(); render(); }
-function toggleWatch(t,ev){ if(ev) ev.stopPropagation(); watchlist=isWatch(t)?watchlist.filter(x=>x!==t):[...watchlist,t]; save(); render(); if(currentMovie&&currentMovie.title===t) updateButtons(); }
-function cardHTML(m){
-  return `<div class="card"><div class="plus" onclick="toggleWatch('${m.title.replace(/'/g,"")}',event)">${isWatch(m.title)?'✓':' +'}</div><div class="heart" onclick="toggleFav('${m.title.replace(/'/g,"")}',event)">${isFav(m.title)?'❤️':'🤍'}</div><div onclick='playMovieByTitle("${m.title.replace(/"/g,'')}")'><img src="${m.img}"><div><h3>${m.title}</h3><p>${m.genre}</p><span class="badge">▶ Watch Free</span></div></div></div>`;
-}
+function toggleWatch(t,ev){ if(ev) ev.stopPropagation(); watchlist=isWatch(t)?watchlist.filter(x=>x!==t):[...watchlist,t]; save(); render(); }
+function cardHTML(m){ let prem=m.premium?`<span class="premium">👑 R20</span>`:''; let lock=m.premium && !unlocked.includes(m.title)?'🔒 ':''; return `<div class="card"><div class="plus" onclick="toggleWatch('${m.title.replace(/'/g,"")}',event)">${isWatch(m.title)?'✓':' +'}</div><div class="heart" onclick="toggleFav('${m.title.replace(/'/g,"")}',event)">${isFav(m.title)?'❤️':'🤍'}</div>${prem}<div onclick='playMovieByTitle("${m.title.replace(/"/g,'')}")'><img src="${m.img}"><div><h3>${lock}${m.title}</h3><p>${m.genre} • By ${m.creator||'Vuno Royal'}</p><span class="badge">${m.premium?'👑 R20':'▶ Free'}</span></div></div></div>`; }
 function playMovieByTitle(t){ let m=movies.find(x=>x.title===t); if(m) playMovie(m); }
 function render(){
   let list=currentCat==="All"?movies:movies.filter(m=>m.cat===currentCat);
-  document.getElementById('movieGrid').innerHTML=list.map(cardHTML).join('')||"<p>No movies yet. Upload one!</p>";
+  document.getElementById('movieGrid').innerHTML=list.map(cardHTML).join('')||"<p>No movies yet</p>";
+  document.getElementById('premiumGrid').innerHTML=movies.filter(m=>m.premium).map(cardHTML).join('')||"<p>No premium yet</p>";
   document.getElementById('saGrid').innerHTML=movies.filter(m=>m.cat==="Nollywood").map(cardHTML).join('')||"<p>No Nollywood yet</p>";
-  document.getElementById('uploadGrid').innerHTML=movies.filter(m=>m.isUpload).map(cardHTML).join('')||"<p>No community uploads yet. Be the first! Click Upload.</p>";
+  document.getElementById('uploadGrid').innerHTML=movies.filter(m=>m.isUpload).map(cardHTML).join('')||"<p>No uploads yet</p>";
   document.getElementById('sectionTitle').innerText=currentCat==="All"?"🔥 Trending Now":currentCat;
+  document.getElementById('tvGrid').innerHTML=tvChannels.map((ch,i)=>`<div class="tvCard" onclick="playTV(${i})"><div style="font-size:32px">${ch.icon}</div><h4 style="font-size:13px;margin:6px 0">${ch.name}</h4><p style="font-size:11px;color:#aaa">${ch.desc}</p><span class="liveBadge">● LIVE</span></div>`).join('');
+  document.getElementById('creatorList').innerHTML=creators.map(c=>`<div class="profileCard"><div style="display:flex;gap:10px;align-items:center"><div class="avatar">${c.img}</div><div><b>${c.name}</b><br><span style="color:#aaa;font-size:12px">${c.bio} • ${c.followers} followers</span></div></div><div style="display:flex;gap:5px"><button class="btn btn-green" onclick="openChat('${c.name}')">💬 Chat</button><button class="btn ${following.includes(c.name)?'btn-dark':'btn-gold'}" onclick="toggleFollow('${c.name}')">${following.includes(c.name)?'✓ Following':'Follow'}</button></div></div>`).join('');
   if(cont.length){ document.getElementById('continueSection').style.display='block'; document.getElementById('continueGrid').innerHTML=cont.map(c=>{let m=movies.find(x=>x.title===c.title); return m?cardHTML(m):''}).join(''); } else document.getElementById('continueSection').style.display='none';
+  updateNotifDot();
 }
+function toggleFollow(name){ following=following.includes(name)?following.filter(x=>x!==name):[...following,name]; save(); render(); }
 function filterCat(c){ currentCat=c; renderCats(); render(); }
-function searchMovies(){ let q=document.getElementById('search').value.toLowerCase(); let list=movies.filter(m=>m.title.toLowerCase().includes(q)); document.getElementById('movieGrid').innerHTML=list.map(cardHTML).join(''); document.getElementById('sectionTitle').innerText="🔍 Search Results"; }
-function updateButtons(){ if(!currentMovie) return; document.getElementById('favBtn').innerText=isFav(currentMovie.title)?"❤️ In Favourites":"🤍 Add to Favourites"; document.getElementById('watchBtn').innerText=isWatch(currentMovie.title)?"✓ In Watchlist":"📋 Add to Watchlist"; }
+function searchMovies(){ let q=document.getElementById('search').value.toLowerCase(); let list=movies.filter(m=>m.title.toLowerCase().includes(q)||(m.creator||'').toLowerCase().includes(q)); document.getElementById('movieGrid').innerHTML=list.map(cardHTML).join(''); document.getElementById('sectionTitle').innerText="🔍 Search Results"; }
+function playTV(i){ let ch=tvChannels[i]; currentMovie={title:ch.name+" - LIVE",url:ch.url,type:"embed"}; document.getElementById('playerTitle').innerText=ch.name+" - LIVE 📺"; document.getElementById('playerBox').innerHTML=`<iframe src="${ch.url}" allowfullscreen></iframe>`; document.getElementById('player').style.display='flex'; }
 function playMovie(m){
-  currentMovie=m;
-  document.getElementById('playerTitle').innerText=m.title;
-  let box=document.getElementById('playerBox');
-  if(m.type==="file" && m.fileUrl){ box.innerHTML=`<video src="${m.fileUrl}" controls autoplay style="width:95%;max-width:900px;height:460px"></video>`; }
-  else { box.innerHTML=`<iframe src="${m.url}" allowfullscreen></iframe>`; }
+  if(m.premium && !unlocked.includes(m.title)){ currentMovie=m; document.getElementById('payTitle').innerText=m.title+" - R20"; document.getElementById('payModal').style.display='flex'; return; }
+  currentMovie=m; document.getElementById('playerTitle').innerText=m.title;
+  let box=document.getElementById('playerBox'); if(m.type==="file" && m.fileUrl) box.innerHTML=`<video src="${m.fileUrl}" controls autoplay style="width:95%;max-width:900px;height:460px"></video>`; else box.innerHTML=`<iframe src="${m.url}" allowfullscreen></iframe>`;
   document.getElementById('dlBtn').onclick=()=>{ if(m.dl && m.dl!=="#") window.open(m.dl,'_blank'); else alert('Download coming soon'); };
   document.getElementById('favBtn').onclick=()=>{ toggleFav(m.title,{stopPropagation:()=>{}}); updateButtons(); };
   document.getElementById('watchBtn').onclick=()=>{ toggleWatch(m.title); updateButtons(); };
-  updateButtons(); renderComments();
-  document.getElementById('player').style.display='flex';
+  updateButtons(); renderComments(); document.getElementById('player').style.display='flex';
   let ex=cont.find(c=>c.title===m.title); if(!ex) cont.unshift({title:m.title,p:35}); else ex.p=Math.min(95,ex.p+10); save(); render();
 }
+function updateButtons(){ if(!currentMovie) return; document.getElementById('favBtn').innerText=isFav(currentMovie.title)?"❤️ In Favourites":"🤍 Add to Favourites"; document.getElementById('watchBtn').innerText=isWatch(currentMovie.title)?"✓ In Watchlist":"📋 Add to Watchlist"; }
 function closePlayer(){ document.getElementById('playerBox').innerHTML=''; document.getElementById('player').style.display='none'; }
-function shareMovie(){ if(!currentMovie) return; window.open(`https://wa.me/?text=${encodeURIComponent('Watch FREE: '+currentMovie.title+' on Vuno Royal Movies!')}`,'_blank'); }
-// COMMENTS
-function renderComments(){ if(!currentMovie) return; let list=comments[currentMovie.title]||[]; document.getElementById('commentList').innerHTML=list.length?list.map(c=>`<div class="comment"><b>${c.name}</b> • ${c.text}</div>`).join(''):"<p style='color:#888;font-size:13px'>No comments yet. Be the first!</p>"; }
-function addComment(){ let n=document.getElementById('commentName').value||localStorage.getItem('vuno_user')||"Guest"; let t=document.getElementById('commentText').value; if(!t) return alert("Write a comment first"); if(!comments[currentMovie.title]) comments[currentMovie.title]=[]; comments[currentMovie.title].push({name:n,text:t}); save(); document.getElementById('commentText').value=""; renderComments(); }
-// WATCHLIST / FAVS
-function showWatchlist(btn){ setNav(btn); let list=movies.filter(m=>watchlist.includes(m.title)); document.getElementById('movieGrid').innerHTML=list.map(cardHTML).join('')||"<p>Watchlist empty. Tap + on any movie to save it for later!</p>"; document.getElementById('sectionTitle').innerText="📋 My Watchlist - Watch Later"; window.scrollTo(0,500); }
-function showFavs(btn){ setNav(btn); let list=movies.filter(m=>favs.includes(m.title)); document.getElementById('movieGrid').innerHTML=list.map(cardHTML).join('')||"<p>No favourites yet. Tap 🤍</p>"; document.getElementById('sectionTitle').innerText="❤️ My Favourites"; window.scrollTo(0,500); }
+function shareMovie(){ if(!currentMovie) return; window.open(`https://wa.me/?text=${encodeURIComponent('Watch: '+currentMovie.title+' on Vuno Royal Movies!')}`,'_blank'); }
+function renderComments(){ if(!currentMovie) return; let list=comments[currentMovie.title]||[]; document.getElementById('commentList').innerHTML=list.length?list.map(c=>`<div class="comment"><b>${c.name}</b> • ${c.text}</div>`).join(''):"<p style='color:#888;font-size:13px'>No comments yet</p>"; }
+function addComment(){ let n=document.getElementById('commentName').value||localStorage.getItem('vuno_user')||"Guest"; let t=document.getElementById('commentText').value; if(!t) return alert("Write comment"); if(!comments[currentMovie.title]) comments[currentMovie.title]=[]; comments[currentMovie.title].push({name:n,text:t}); save(); document.getElementById('commentText').value=""; renderComments(); }
+// NOTIFS
+function openNotifs(){ document.getElementById('notifList').innerHTML=notifs.map((n,i)=>`<div style="background:#222;padding:12px;border-radius:10px;margin:8px 0;${!n.read?'border-left:3px solid #E50914':''}"><b>${n.title}</b><br><span style="color:#aaa;font-size:12px">${n.time}</span></div>`).join(''); document.getElementById('notifModal').style.display='flex'; notifs.forEach(n=>n.read=true); save(); }
+function closeNotifs(){ document.getElementById('notifModal').style.display='none'; }
+function sendNotifToAll(){ let t=document.getElementById('notifTitle').value; if(!t) return alert("Write notification"); notifs.unshift({title:t,time:"Just now",read:false}); save(); if("Notification" in window && Notification.permission==="granted") new Notification("Vuno Royal Movies 👑",{body:t}); alert("Notification Sent to Everyone! 📣"); document.getElementById('notifTitle').value=""; }
+// CHAT
+function openChatList(){ document.getElementById('chatList').innerHTML=creators.map(c=>`<div class="chatItem" onclick="openChat('${c.name}')"><div><b>${c.name}</b><br><span style="color:#aaa;font-size:12px">${c.lastMsg}</span></div><span>›</span></div>`).join(''); document.getElementById('chatListModal').style.display='flex'; document.getElementById('chatDot').style.display='none'; }
+function closeChatList(){ document.getElementById('chatListModal').style.display='none'; }
+function openChat(name){ currentChat=name; document.getElementById('chatWith').innerText="💬 Chat with "+name; closeChatList(); document.getElementById('chatModal').style.display='flex'; renderChat(); }
+function closeChat(){ document.getElementById('chatModal').style.display='none'; }
+function renderChat(){ if(!currentChat) return; let list=chats[currentChat]||[]; document.getElementById('chatBox').innerHTML=list.map(m=>`<div class="msg ${m.from==='me'?'me':'other'}">${m.text}</div>`).join(''); document.getElementById('chatBox').scrollTop=9999; }
+function sendChat(){ let inp=document.getElementById('chatInput'); let txt=inp.value.trim(); if(!txt||!currentChat) return; if(!chats[currentChat]) chats[currentChat]=[]; chats[currentChat].push({from:"me",text:txt}); save(); renderChat(); inp.value=""; setTimeout(()=>{ chats[currentChat].push({from:"other",text:"Thanks for messaging! 🙏 I will reply soon. Check my new movie! 🔥"}); save(); renderChat(); notifs.unshift({title:`💬 ${currentChat} replied to you`,time:"Just now",read:false}); save(); },1500); }
+// PAY
+function closePay(){ document.getElementById('payModal').style.display='none'; }
+function payWhatsApp(){ let num=paySettings.whatsapp||"27789313670"; window.open(`https://wa.me/${num}?text=${encodeURIComponent('Hi I want to pay R20 for: '+(currentMovie?currentMovie.title:''))}`,'_blank'); alert("Send R20 + screenshot. You will get code VR2026"); }
+function payCard(){ if(paySettings.link) window.open(paySettings.link,'_blank'); else alert("Admin has not added PayFast link yet. Use WhatsApp Pay."); }
+function unlockWithCode(){ let code=document.getElementById('payCode').value.trim(); if(code==="VR2026"||code==="1234"||code.toUpperCase().startsWith("VR")){ unlocked.push(currentMovie.title); save(); closePay(); alert("Unlocked ✅"); playMovie(currentMovie); } else alert("Wrong code. Ask admin on WhatsApp."); }
+function showPremium(btn){ if(btn) setNav(btn); let list=movies.filter(m=>m.premium); document.getElementById('movieGrid').innerHTML=list.map(cardHTML).join('')||"<p>No premium yet</p>"; document.getElementById('sectionTitle').innerText="👑 Premium - R20"; window.scrollTo(0,600); }
+function showWatchlist(btn){ setNav(btn); let list=movies.filter(m=>watchlist.includes(m.title)); document.getElementById('movieGrid').innerHTML=list.map(cardHTML).join('')||"<p>Watchlist empty</p>"; document.getElementById('sectionTitle').innerText="📋 My Watchlist"; window.scrollTo(0,500); }
+function showFavs(btn){ setNav(btn); let list=movies.filter(m=>favs.includes(m.title)); document.getElementById('movieGrid').innerHTML=list.map(cardHTML).join('')||"<p>No favourites yet</p>"; document.getElementById('sectionTitle').innerText="❤️ My Favourites"; window.scrollTo(0,500); }
 function showHome(btn){ setNav(btn); currentCat="All"; renderCats(); render(); window.scrollTo(0,0); }
 function setNav(btn){ if(!btn) return; document.querySelectorAll('.bottomNav button').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
-// LOGIN
+function openProfile(){ let u=localStorage.getItem('vuno_user')||"Guest"; document.getElementById('profileName').innerText=u; document.getElementById('profileAvatar').innerText=u[0].toUpperCase(); document.getElementById('profileStats').innerText=`Following ${following.length} • Favs ${favs.length} • Watchlist ${watchlist.length}`; document.getElementById('myFollowing').innerHTML=following.length?following.map(f=>`<p style="font-size:13px">✓ ${f}</p>`).join(''):"<p style='color:#aaa;font-size:13px'>Not following anyone</p>"; document.getElementById('profileModal').style.display='flex'; } function closeProfile(){ document.getElementById('profileModal').style.display='none'; }
+function saveProfile(){ localStorage.setItem('vuno_bio',document.getElementById('profileBio').value); alert("Profile Saved ✅"); closeProfile(); }
+function doLoginPrompt(){ closeProfile(); document.getElementById('loginModal').style.display='flex'; }
 function openLogin(){ document.getElementById('loginModal').style.display='flex'; } function closeLogin(){ document.getElementById('loginModal').style.display='none'; }
-function doLogin(){ let n=document.getElementById('uName').value||"Friend"; localStorage.setItem('vuno_user',n); document.getElementById('userName').innerText="Hi, "+n+" 👋"; document.getElementById('loginBtn').innerText="Logout"; closeLogin(); }
-document.getElementById('loginBtn').onclick=()=>{ if(localStorage.getItem('vuno_user')){ localStorage.removeItem('vuno_user'); location.reload(); } else openLogin(); };
-let saved=localStorage.getItem('vuno_user'); if(saved){ document.getElementById('userName').innerText="Hi, "+saved+" 👋"; document.getElementById('loginBtn').innerText="Logout"; }
-// UPLOAD
+function doLogin(){ let n=document.getElementById('uName').value||"Friend"; localStorage.setItem('vuno_user',n); document.getElementById('avatarBtn').innerText=n[0].toUpperCase(); closeLogin(); }
+let savedUser=localStorage.getItem('vuno_user'); if(savedUser) document.getElementById('avatarBtn').innerText=savedUser[0].toUpperCase();
 function openUpload(){ document.getElementById('uploadModal').style.display='flex'; } function closeUpload(){ document.getElementById('uploadModal').style.display='none'; }
-function doUpload(){
-  let title=document.getElementById('upTitle').value; let url=document.getElementById('upUrl').value; let file=document.getElementById('upFile').files[0];
-  if(!title) return alert("Need a Title");
-  if(file){
-    let fileUrl=URL.createObjectURL(file);
-    movies.unshift({title:title,genre:"Community Upload",cat:document.getElementById('upCat').value,img:document.getElementById('upImg').value||"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400",url:fileUrl,dl:"#",type:"file",fileUrl:fileUrl,isUpload:true});
-    save(); render(); closeUpload(); alert("Uploaded! ✅ It will show in Community Uploads on THIS device. For everyone to see, upload to YouTube and paste link instead.");
-  } else if(url){
-    movies.unshift({title:title,genre:"Community Upload",cat:document.getElementById('upCat').value,img:document.getElementById('upImg').value||"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400",url:url,dl:"#",type:"embed",isUpload:true});
-    save(); render(); closeUpload(); alert("Published! ✅ Everyone will see it.");
-  } else return alert("Choose a video file OR paste a YouTube link");
-}
-// ADMIN
+function doUpload(){ let title=document.getElementById('upTitle').value; let url=document.getElementById('upUrl').value; let file=document.getElementById('upFile').files[0]; let isPrem=document.getElementById('upPremium').checked; if(!title) return alert("Need Title"); let creator=localStorage.getItem('vuno_user')||"Guest Creator"; let m={title:title,genre:isPrem?"Premium R20":"Community",cat:document.getElementById('upCat').value,img:document.getElementById('upImg').value||"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400",dl:"#",isUpload:true,premium:isPrem,creator:creator}; if(file){ let fu=URL.createObjectURL(file); m.url=fu; m.type="file"; m.fileUrl=fu; } else if(url){ m.url=url; m.type="embed"; } else return alert("Choose file OR paste link"); movies.unshift(m); notifs.unshift({title:`🔥 NEW: ${title} by ${creator} is OUT!`,time:"Just now",read:false}); save(); render(); closeUpload(); alert("Published + Followers Notified! 📣"); }
 function openAdmin(){ document.getElementById('adminModal').style.display='flex'; renderAdminList(); } function closeAdmin(){ document.getElementById('adminModal').style.display='none'; }
-function unlockAdmin(){ if(document.getElementById('adminPass').value==="1234"){ document.getElementById('adminForm').style.display='block'; document.getElementById('adminUnlock').style.display='none'; } else alert("Wrong password! Default 1234"); }
-function addMovie(){ let t=document.getElementById('newTitle').value; let u=document.getElementById('newUrl').value; if(!t||!u) return alert("Need Title + Link"); movies.unshift({title:t,genre:document.getElementById('newGenre').value||"New",cat:document.getElementById('newCat').value,img:document.getElementById('newImg').value||"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400",url:u,dl:document.getElementById('newDl').value||"#",type:"embed"}); save(); render(); renderAdminList(); alert("Added ✅"); }
-function renderAdminList(){ document.getElementById('adminList').innerHTML=movies.map((m,i)=>`<div class="adminItem"><span>${m.title}</span><button onclick="deleteMovie(${i})" style="background:red;color:#fff;border:none;padding:5px 10px;border-radius:5px">Delete</button></div>`).join(''); }
+function unlockAdmin(){ if(document.getElementById('adminPass').value==="1234"){ document.getElementById('adminForm').style.display='block'; document.getElementById('adminUnlock').style.display='none'; document.getElementById('payfastLink').value=paySettings.link||""; } else alert("Wrong password 1234"); }
+function savePaySettings(){ paySettings.link=document.getElementById('payfastLink').value; paySettings.whatsapp=document.getElementById('whatsappPay').value; save(); alert("Saved ✅"); }
+function addMovie(){ let t=document.getElementById('newTitle').value; let u=document.getElementById('newUrl').value; if(!t||!u) return alert("Need Title + Link"); movies.unshift({title:t,genre:document.getElementById('newGenre')?.value||"New",cat:document.getElementById('newCat').value,img:document.getElementById('newImg').value||"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400",url:u,dl:"#",type:"embed",premium:document.getElementById('newPremium').checked,creator:"Vuno Royal"}); notifs.unshift({title:`🔥 NEW MOVIE: ${t} is OUT!`,time:"Just now",read:false}); save(); render(); renderAdminList(); alert("Added + Notification Sent! 📣"); }
+function renderAdminList(){ document.getElementById('adminList').innerHTML=movies.map((m,i)=>`<div style="background:#222;padding:10px;border-radius:8px;margin:5px 0;display:flex;justify-content:space-between;align-items:center;font-size:13px"><span>${m.title} ${m.premium?'👑':''}</span><button onclick="deleteMovie(${i})" style="background:red;color:#fff;border:none;padding:5px 10px;border-radius:5px">Delete</button></div>`).join(''); }
 function deleteMovie(i){ if(confirm("Delete?")){ movies.splice(i,1); save(); render(); renderAdminList(); } }
+// SERVICE WORKER - Makes it work offline like an app
+if('serviceWorker' in navigator){ let swCode=`self.addEventListener('fetch',e=>{e.respondWith(fetch(e.request).catch(()=>new Response('Offline - Vuno Royal')))});`; let blob=new Blob([swCode],{type:'text/javascript'}); let swUrl=URL.createObjectURL(blob); navigator.serviceWorker.register(swUrl).catch(()=>{}); }
 renderCats(); render();
 </script>
 </body>
